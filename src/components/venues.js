@@ -10,9 +10,11 @@ class Venues extends Component {
     };
   }
 
+
   componentWillReceiveProps(nextProps) { //debugger;
     this.getDisallowedVenues(nextProps);
   }
+
 
   getDisallowedVenues = (nextProps) => {
     const { venues } = nextProps;
@@ -20,13 +22,15 @@ class Venues extends Component {
     let allDisallowedVenues = [];
 
     venues.forEach(venue => { // loop venues
-      if(venue.users) { // check users have been selected
+      if(venue.users) { // check users have been selected to avoid undefined error
 
+        // if no copy of the venue in the state object create a new one, else use the state
         let disallowedVenue = typeof self.state.disallowed[venue.name] === 'undefined'
           ? { name: venue.name, reasons: new Set() } // new
           : self.state.disallowed[venue.name] // copy
 
-        for(let i = 0; i < venue.users.length; i++) { // loop users in each venue
+        // look at each user in this venue and extract why they cant go
+        for(let i = 0; i < venue.users.length; i++) { 
           if(venue.users[i]['can-drink'] === false) {
             disallowedVenue.reasons.add(`There is nothing for ${venue.users[i].name} to drink`);
           }
@@ -37,23 +41,29 @@ class Venues extends Component {
         allDisallowedVenues.push(disallowedVenue);
       }
     })
-    this.setState({ disallowed: allDisallowedVenues }, () => this.getAllowedVenues(venues));
+
+    this.setState({ 
+      disallowed: allDisallowedVenues 
+    }, () => this.getAllowedVenues(venues));
   }
+
 
   getAllowedVenues = () => { // debugger;
     const { disallowed } = this.state;
 
+    // allowed venues are those in the disallowed with an empty 'reason' set/array
     this.setState({
       allowed: disallowed.filter(venue => venue.reasons.size === 0)
     }, () => console.log(this.state))
   }
+
 
   render() {
     const { disallowed, allowed } = this.state;
     
     let allowedVenues = allowed
       .map((venue, index) => {
-        return(<h3 key={`${index}-allowedVenue`}>{venue.name}</h3>)
+        return(<h3 key={`${index}-allowedVenue`}><span>👍</span> {venue.name}</h3>)
       });
     
     let disallowedVenues = disallowed
@@ -61,7 +71,7 @@ class Venues extends Component {
       .map((venue, index) => {
         return(
           <div>
-            <h3 key={`${index}-disallowedVenue`}>{venue.name}</h3>
+            <h3 key={`${index}-disallowedVenue`}><span>👎</span> {venue.name}</h3>
             {Array.from(venue.reasons).map(reason => {
               return(<p>{reason}</p>)
             })}

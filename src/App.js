@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import './stylesheets/App.css';
 import Venues from './components/venues';
 import Header from './components/header';
-
 import { users } from './data/users';
 import { venues } from './data/venues';
-
 import {
   cleanUsersObject,
   cleanVenuesObject,
@@ -13,7 +12,6 @@ import {
   whoIsGoing
 } from './utilities/utilities';
 
-import './stylesheets/App.css';
 
 class App extends Component {
   constructor() {
@@ -29,29 +27,33 @@ class App extends Component {
     this.setState({ 
       users: cleanUsersObject(users),
       venues: cleanVenuesObject(venues)
-    }, () => console.log(this.state))
+    })
   }
+
 
   handleUserSelect = (e) => { //debugger;
     let checked = e.target.checked ? true : false;
 
+    // prepend/remove a 'checked' flag to the user object
     this.setState({
       users: this.state.users.map(user => {
         if(user.name === e.target.name) {
-          return Object.assign({}, user, { checked }) // prepend a 'checked' flag
+          return Object.assign({}, user, { checked }) 
         } else {
           return user;
         }
       })
 
-    }, () => {
+    }, () => { // now analyse
       this.whereCanWeGo();
     });
   }
 
+
   whereCanWeGo = () => {
     let attendees = whoIsGoing(this.state.users);
     
+    // prepend user analysis data to the venue object
     this.setState({
       venues: this.state.venues
         .map(venue => {
@@ -65,8 +67,9 @@ class App extends Component {
             })
           })
         })
-    }, /*() => console.log(this.state)*/); 
+    }); 
   }
+
 
   render() {
     const { users, venues } = this.state;
@@ -89,13 +92,15 @@ class App extends Component {
       )
     })
 
+    let codeLink = <a href="https://github.com/moaiii/moaiii-timeout" 
+      className="codelink">Code can be accessed here.</a>
+
     return (
       <div className="App">
         {header}
+        {codeLink}
         {userSelectionForm}
         {venuesAnalysis}
-        <a href="https://github.com/moaiii/moaiii-timeout" 
-          className="codelink">Code can be accessed here.</a>
       </div>
     );
   }

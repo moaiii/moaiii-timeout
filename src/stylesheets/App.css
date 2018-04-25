@@ -1,3 +1,8 @@
+* {
+  font-family: "Courier New", Courier, monospace;
+  color: #111;
+}
+
 h3 {
   text-align: left;
 }
@@ -7,13 +12,31 @@ p {
   margin: 0;
 }
 
-.App {
-  text-align: center;
+.codelink {
+  color: red;
+  text-decoration: none;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.Header h1 {
+  padding: 2rem;
+  color: white;
+  background-color: #111;
+  font-weight: 900;
+  width: 25%;
+  border-bottom: 5px red solid;
+  border-radius: 2px;
+
+  margin: 0 auto;
+}
+
+.Header h3 {
+  text-align: center;
 }
 
 .App-header {
@@ -24,7 +47,8 @@ p {
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
+  letter-spacing: 2px;
 }
 
 .App-intro {
@@ -43,9 +67,17 @@ p {
   padding: 1rem;
 }
 
+.approved__container h2 {
+  border-bottom: 1px solid #111;
+}
+
 .disallowed__container {
   display: flex;
   flex-direction: column;
   width: 50%;
   padding: 1rem;
+}
+
+.disallowed__container h2 {
+  border-bottom: 1px solid #111;
 }
