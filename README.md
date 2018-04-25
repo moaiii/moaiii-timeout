@@ -1,7 +1,6 @@
 Timeout tech test
 
 Live link:
-## Table of Contents
-
+## http://moaiii-timeout.s3-website-eu-west-1.amazonaws.com/
 
 Chris Melville
