@@ -94,6 +94,8 @@ class App extends Component {
         {header}
         {userSelectionForm}
         {venuesAnalysis}
+        <a href="https://github.com/moaiii/moaiii-timeout" 
+          className="codelink">Code can be accessed here.</a>
       </div>
     );
   }

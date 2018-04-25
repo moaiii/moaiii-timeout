@@ -7,4 +7,4 @@ git push
 npm run build
 
 #Deploying to AWS S3 bucket
-aws s3 sync build/ s3://moaiii-timeout --profile moaiii
+aws s3 sync build/ s3://moaiii-timeout
