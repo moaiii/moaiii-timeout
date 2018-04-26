@@ -6,18 +6,18 @@ Live link:
 Build using create-react-app. 
 You must have this installed using 
 
-##$ npm i -g create-react-app 
+`npm i -g create-react-app`
 
 then in the root directory run 
 
-##$ npm i
+`$ npm i`
 
 and then 
 
-##$ npm start
+`npm start`
 
 Alternatively you can locally serve the index.html file in the build directory. For example 
 
-## $ python -m SimpleHTTPServer 8080
+`$ python -m SimpleHTTPServer 8080`
 
 Chris Melville
