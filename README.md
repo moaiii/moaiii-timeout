@@ -10,7 +10,7 @@ You must have this installed using
 
 then in the root directory run 
 
-`$ npm i`
+`npm i`
 
 and then 
 
@@ -18,6 +18,6 @@ and then
 
 Alternatively you can locally serve the index.html file in the build directory. For example 
 
-`$ python -m SimpleHTTPServer 8080`
+`python -m SimpleHTTPServer 8080`
 
 Chris Melville
