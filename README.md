@@ -1,7 +1,7 @@
 Timeout tech test
 
 Live link:
-## http://moaiii-timeout.s3-website-eu-west-1.amazonaws.com/
+## https://goo.gl/tefCko
 
 Build using create-react-app. 
 You must have this installed using 
